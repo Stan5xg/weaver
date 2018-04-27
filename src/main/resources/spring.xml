@@ -10,7 +10,17 @@
         <constructor-arg index="1" value="John Smith"/>
     </bean>
 
-    <bean id="eventLogger" class="com.epam.spring.core.loggers.ConsoleEventLogger" scope="singleton"/>
+    <!--<bean id="eventLogger" class="com.epam.spring.core.loggers.ConsoleEventLogger" scope="singleton"/>-->
+
+    <!--<bean id="eventLogger" class="com.epam.spring.core.loggers.FileEventLogger" init-method="init">-->
+        <!--<constructor-arg value="C:\Users\Sergei_Morozov\Documents\Projects\spring-weaver\logfile.txt"/>-->
+    <!--</bean>-->
+    <bean id="eventLogger" class="com.epam.spring.core.loggers.CacheFileEventLogger" init-method="init" destroy-method="destroy">
+        <constructor-arg value="C:\Users\Sergei_Morozov\Documents\Projects\spring-weaver\logfile.txt"/>
+        <constructor-arg value="2"/>
+    </bean>
+
+
 
     <bean id="event" class="com.epam.spring.core.events.Event" scope="prototype">
         <constructor-arg>
